@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0077c6</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="formTitle">#0077C7</color>
+    <color name="formText">#0077C7</color>
+    <color name="blue">#0077c6</color>
+    <color name="btnBg">#0077C7</color>
+    <color name="btnText">#ffffff</color>
+    <color name="btnCancel">#ffffff</color>
+    <color name="lighter_blue">#b0d4ec</color>
+    <color name="yellow">#FFCC00</color>
+
+</resources>

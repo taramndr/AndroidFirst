@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MyAppFirst</string>
+    <string name="sign_up">SIGN UP </string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="phone">Phone</string>
+    <string name="address">Address</string>
+    <string name="your_address">Your Address</string>
+    <string name="submit">Connect</string>
+    <string name="cancel">Cancel</string>
+
+</resources>

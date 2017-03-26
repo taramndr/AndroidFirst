@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context="android.com.myappfirst.activity.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up"
+        android:id="@+id/form_title"
+        android:gravity="center_horizontal"
+        android:textColor="@color/formTitle"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dip"
+        android:background="@color/yellow"
+        android:layout_below="@id/form_title"
+        android:id="@+id/horz_line"
+       />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/form_title"
+        android:id="@+id/name_layout"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:text="@string/name"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edt_first_name"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/lighter_blue"
+                android:hint="@string/first_name"
+                android:textColor="@color/blue"
+                android:textColorHint="@color/blue" />
+
+            <EditText
+                android:id="@+id/edt_last_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/lighter_blue"
+                android:hint="@string/last_name"
+                android:textColor="@color/blue"
+                android:textColorHint="@color/blue" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/name_layout"
+        android:id="@+id/email_layout"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:text="@string/email"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_weight="2"
+            android:layout_height="0dp"
+            android:id="@+id/edt_email_address"
+            android:inputType="textEmailAddress"
+            android:hint="@string/email_address"
+            android:textColor="@color/blue"
+            android:textColorHint="@color/blue"
+            android:backgroundTint="@color/lighter_blue"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/email_layout"
+        android:id="@+id/phone_layout"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:text="@string/phone"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_weight="2"
+            android:layout_height="0dp"
+            android:id="@+id/edt_phone"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:hint="@string/phone"
+            android:textColorHint="@color/blue"
+            android:textColor="@color/blue"
+            android:backgroundTint="@color/lighter_blue"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/phone_layout"
+        android:id="@+id/address_layout"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:text="@string/address"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_weight="2"
+            android:layout_height="0dp"
+            android:id="@+id/edt_address"
+            android:hint="@string/your_address"
+            android:visibility="visible"
+            android:textColor="@color/blue"
+            android:textColorHint="@color/blue"
+            android:backgroundTint="@color/lighter_blue"
+           />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/address_layout"
+        android:id="@+id/btn_layout"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_centerInParent="true"
+        >
+
+        <Button
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_submit"
+            android:text="@string/submit"
+            android:onClick="formSubmitOnClick"
+            android:background="@color/btnBg"
+            android:textColor="@color/btnText"
+            android:drawableRight="@drawable/btn_arrow"
+            android:textSize="14sp"
+            android:layout_marginRight="10dp"
+            android:paddingRight="20px"
+            />
+
+
+        <Button
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_cancel"
+            android:text="@string/cancel"
+            android:onClick="clearForm"
+            android:background="@color/btnBg"
+            android:textColor="@color/btnText"
+            android:drawableRight="@drawable/cancel"
+            android:textSize="14sp"
+            android:layout_marginLeft="10dp"
+            android:paddingRight="20px"
+            />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
