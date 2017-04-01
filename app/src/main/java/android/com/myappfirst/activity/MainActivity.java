@@ -2,6 +2,7 @@ package android.com.myappfirst.activity;
 
 import android.app.ProgressDialog;
 import android.com.myappfirst.R;
+import android.com.myappfirst.activity.utils.Constants;
 import android.com.myappfirst.activity.utils.ToastUtils;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -27,17 +28,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initView();
 
-    }
-
-    private void initView() {
-        edtFirstName = (EditText) findViewById(R.id.edt_first_name);
-        edtLastName = (EditText) findViewById(R.id.edt_last_name);
-        edtPhone = (EditText) findViewById(R.id.edt_phone);
-        edtEmail = (EditText) findViewById(R.id.edt_email_address);
-        edtAddress = (EditText) findViewById(R.id.edt_address);
-        btnSubmit = (Button) findViewById(R.id.btn_submit);
-        btnCancel = (Button) findViewById(R.id.btn_cancel);
-
         /*  //if not much buttons on view can use this
          btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +38,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnSubmit.setOnClickListener(this);  //to use this need to implement view.Listener and override method onClick
         btnCancel.setOnClickListener(this);
+
+    }
+
+    private void initView() {
+        edtFirstName = (EditText) findViewById(R.id.edt_first_name);
+        edtLastName = (EditText) findViewById(R.id.edt_last_name);
+        edtPhone = (EditText) findViewById(R.id.edt_phone);
+        edtEmail = (EditText) findViewById(R.id.edt_email_address);
+        edtAddress = (EditText) findViewById(R.id.edt_address);
+        btnSubmit = (Button) findViewById(R.id.btn_submit);
+        btnCancel = (Button) findViewById(R.id.btn_cancel);
     }
 
     //function call frm view on btn click
@@ -77,25 +78,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         //if validate success show progress dialog for few time
-        final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this, R.style.AppTheme);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Creating Account...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
+//        final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this, R.style.AppTheme);
+//        progressDialog.setIndeterminate(true);
+//        progressDialog.setMessage("Creating Account...");
+//        progressDialog.setCancelable(false);
+//        progressDialog.show();
 
         onSignUpSuccess();
-        progressDialog.dismiss();
+        //progressDialog.dismiss();
 
     }
 
     public boolean validate(){
         boolean valid = true;
 
-        firstName = edtFirstName.getText().toString().trim();
-        lastName = edtLastName.getText().toString().trim();
-        phone = edtPhone.getText().toString().trim();
-        email = edtEmail.getText().toString().trim();
-        address = edtAddress.getText().toString().trim();
+        getDataFromForm();
 
         if ( TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) || TextUtils.getTrimmedLength(lastName) < 3 || TextUtils.getTrimmedLength(firstName) < 3 ) {  //TextUtils is already build in class to chk for text validation
             ToastUtils.showToast(MainActivity.this, "Name must have at least 3 characters." , false);
@@ -115,16 +112,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return valid;
     }
 
-    private void onSignUpSuccess(){
+    private void getDataFromForm() {
         firstName = edtFirstName.getText().toString().trim();
         lastName = edtLastName.getText().toString().trim();
+        phone = edtPhone.getText().toString().trim();
+        email = edtEmail.getText().toString().trim();
+        address = edtAddress.getText().toString().trim();
+    }
 
+    private void onSignUpSuccess(){
         ToastUtils.showToast(MainActivity.this, "Successful" , true);
+
+        getDataFromForm();
+
+        //converting phone to long type
+        long phone_no = Long.parseLong(phone);
+        //create Bundle Object
+        Bundle b = new Bundle();
+        //storing data to bundle
+        b.putString(Constants.FIRST_NAME, firstName);
+        b.putString(Constants.LAST_NAME, lastName);
+        b.putLong(Constants.PHONE_NUM, phone_no);
+        b.putString(Constants.EMAIL, email);
+        b.putString(Constants.ADDRESS, address);
+        // Creating Intent object
         Intent i = new Intent(getApplicationContext(), FrontActivity.class);
-        i.putExtra("firstName", firstName);
-        i.putExtra("lastName", lastName);
+        //i.putExtra(Constants.FIRST_NAME, firstName);
+        //i.putExtra(Constants.LAST_NAME, lastName);
+        //startActivity(i);
+        //storing bundle object into intent
+        i.putExtras(b);
         startActivity(i);
-        setContentView(R.layout.activity_front);
+
     }
 
     private void onSignUpFailed(){

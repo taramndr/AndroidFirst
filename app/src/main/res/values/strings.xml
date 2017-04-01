@@ -12,4 +12,11 @@
     <string name="submit">Connect</string>
     <string name="cancel">Cancel</string>
 
+    <string name="course_prompt">Course Related To</string>
+    <string-array name="course_arrays">
+        <item>PHP</item>
+        <item>Java</item>
+        <item>Android</item>
+        <item>.NET</item>
+    </string-array>
 </resources>

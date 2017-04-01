@@ -7,8 +7,10 @@
     android:orientation="vertical"
     android:padding="0dp"
     tools:context="android.com.myappfirst.activity.FrontActivity"
-    android:layout_gravity="center_horizontal"
-    android:gravity="center"
+    android:paddingLeft="@dimen/activity_horz_padding"
+    android:paddingRight="@dimen/activity_horz_padding"
+    android:paddingTop="@dimen/activity_vert_padding"
+    android:paddingBottom="@dimen/activity_vert_padding"
     >
 
     <TextView
@@ -18,6 +20,92 @@
         android:textAllCaps="true"
         android:textColor="@color/blue"
         android:textSize="20sp"
+        android:text="Welcome..."
         />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make Call"
+        android:id="@+id/btn_make_call"
+        android:onClick="makeCall"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Email"
+        android:id="@+id/btn_send_email"
+        android:onClick="sendEmail"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Launch Browser"
+        android:id="@+id/btn_launch_browser"
+        android:onClick="launchBrowser"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Location"
+        android:id="@+id/btn_show_location"
+        android:onClick="showLocation"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="calculateUserAge"
+        android:text="Calculate User Age"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="checkUserType"
+        android:text="Check User Type"/>
+
+    <LinearLayout
+        android:id="@+id/ll_layout_pass_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/edt_user_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter User Type (Student/Teacher)"
+            android:maxLength="10" />
+
+        <Spinner
+            android:id="@+id/spin_user_course"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/course_arrays"
+            android:prompt="@string/course_prompt" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="getUserTypeResult"
+            android:text="Get Result" />
+
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="startNewActivityForResult"
+        android:text="Launch An Activity for Result" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_show_pass_by_child_actv"/>
+
+
 
 </LinearLayout>

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="30dp"
     tools:context="android.com.myappfirst.activity.MainActivity"
     android:background="#000000">
@@ -41,7 +40,8 @@
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="0dp"
-            android:text="@string/name"/>
+            android:text="@string/name"
+            android:textColor="#fff"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,7 +84,8 @@
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="0dp"
-            android:text="@string/email"/>
+            android:text="@string/email"
+            android:textColor="#fff"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -111,7 +112,8 @@
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="0dp"
-            android:text="@string/phone"/>
+            android:text="@string/phone"
+            android:textColor="#fff"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -139,7 +141,8 @@
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="0dp"
-            android:text="@string/address"/>
+            android:text="@string/address"
+            android:textColor="#fff"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -174,12 +177,13 @@
             android:id="@+id/btn_submit"
             android:text="@string/submit"
             android:onClick="formSubmitOnClick"
-            android:background="@color/btnBg"
+            android:background="@drawable/btn_shape"
             android:textColor="@color/btnText"
             android:drawableRight="@drawable/btn_arrow"
             android:textSize="14sp"
             android:layout_marginRight="10dp"
             android:paddingRight="20px"
+
             />
 
 
@@ -189,13 +193,13 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_cancel"
             android:text="@string/cancel"
-            android:onClick="clearForm"
-            android:background="@color/btnBg"
+            android:background="@drawable/btn_shape"
             android:textColor="@color/btnText"
             android:drawableRight="@drawable/cancel"
             android:textSize="14sp"
             android:layout_marginLeft="10dp"
             android:paddingRight="20px"
+
             />
 
     </LinearLayout>
