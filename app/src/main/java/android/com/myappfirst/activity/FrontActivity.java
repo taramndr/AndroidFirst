@@ -133,7 +133,7 @@ public class FrontActivity extends AppCompatActivity {
     //just starting new activity
     public void calculateUserAge(View v){
         startActivity(new Intent(this, CalculateUserAge.class));
-        //if i put this finish then after backpress frm CalculateUserAge activity you will be directly redirect to MainActivity(form)
+        //if we put this finish then after backpress frm CalculateUserAge activity you will be directly redirect to MainActivity(form)
         finish(); // if we use finish() then app not return back to this activity again
     }
 

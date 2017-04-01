@@ -56,7 +56,7 @@ public class ShowUserType extends AppCompatActivity {
     //Return an value to {@link FrontActivity}
     public void  passUserTypeToParentActivity(View v){
         Intent i = new Intent();
-        i.putExtra(Constants.USER_TYPE, "Passed from called UserType - Activity for startActivity for Result- Front");
+        i.putExtra(Constants.USER_TYPE, "Passed from called UserType Activity to Front. The user type " + user_type + "and relates to course "+ user_course);
         setResult(2, i);
         finish();
     }

@@ -41,7 +41,11 @@
             android:layout_weight="1"
             android:layout_height="0dp"
             android:text="@string/name"
-            android:textColor="#fff"/>
+            android:textColor="#fff"
+            android:id="@+id/txt_fname"
+            android:focusable="true"
+            android:clickable="true"
+            android:focusableInTouchMode="true"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,20 +57,17 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/lighter_blue"
                 android:hint="@string/first_name"
-                android:textColor="@color/blue"
-                android:textColorHint="@color/blue" />
+                style="@style/editTextStyle"
+                />
 
             <EditText
                 android:id="@+id/edt_last_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@color/lighter_blue"
                 android:hint="@string/last_name"
-                android:textColor="@color/blue"
-                android:textColorHint="@color/blue" />
+                style="@style/editTextStyle" />
 
         </LinearLayout>
 
@@ -94,9 +95,7 @@
             android:id="@+id/edt_email_address"
             android:inputType="textEmailAddress"
             android:hint="@string/email_address"
-            android:textColor="@color/blue"
-            android:textColorHint="@color/blue"
-            android:backgroundTint="@color/lighter_blue"/>
+            style="@style/editTextStyle"/>
 
     </LinearLayout>
 
@@ -123,9 +122,7 @@
             android:inputType="phone"
             android:maxLength="10"
             android:hint="@string/phone"
-            android:textColorHint="@color/blue"
-            android:textColor="@color/blue"
-            android:backgroundTint="@color/lighter_blue"/>
+            style="@style/editTextStyle"/>
 
     </LinearLayout>
 
@@ -150,10 +147,7 @@
             android:layout_height="0dp"
             android:id="@+id/edt_address"
             android:hint="@string/your_address"
-            android:visibility="visible"
-            android:textColor="@color/blue"
-            android:textColorHint="@color/blue"
-            android:backgroundTint="@color/lighter_blue"
+            style="@style/editTextStyle"
            />
 
     </LinearLayout>
@@ -183,7 +177,6 @@
             android:textSize="14sp"
             android:layout_marginRight="10dp"
             android:paddingRight="20px"
-
             />
 
 

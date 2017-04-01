@@ -12,12 +12,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private EditText edtFirstName, edtLastName, edtPhone, edtEmail, edtAddress;
+    private TextView txtFname;
     private Button btnSubmit, btnCancel;
     private String firstName, lastName, email, address, phone;
 
@@ -49,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         edtAddress = (EditText) findViewById(R.id.edt_address);
         btnSubmit = (Button) findViewById(R.id.btn_submit);
         btnCancel = (Button) findViewById(R.id.btn_cancel);
+
+        txtFname = (TextView) findViewById(R.id.txt_fname);
     }
 
     //function call frm view on btn click
@@ -94,19 +98,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         getDataFromForm();
 
-        if ( TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) || TextUtils.getTrimmedLength(lastName) < 3 || TextUtils.getTrimmedLength(firstName) < 3 ) {  //TextUtils is already build in class to chk for text validation
-            ToastUtils.showToast(MainActivity.this, "Name must have at least 3 characters." , false);
+        if ( TextUtils.isEmpty(firstName)  || TextUtils.getTrimmedLength(firstName) < 3 ) {  //TextUtils is already build in class to chk for text validation
+            //ToastUtils.showToast(MainActivity.this, "Name must have at least 3 characters." , false);
+            txtFname.setError("Name must contain 3 characters.");
+            valid = false;
+        }
+
+        else if (TextUtils.isEmpty(lastName) || TextUtils.getTrimmedLength(lastName) < 3){
+            txtFname.setError("Name must have at least 3 characters.");
+            //edtLastName.setError("Last Name contain 3 characters.");
             valid = false;
         }
 
         else if (TextUtils.isEmpty(email) || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            ToastUtils.showToast(MainActivity.this, "Enter valid Email Address." , false);
+            edtEmail.setError("Enter valid Email Address.");
             valid = false;
         }
 
         else if (TextUtils.isEmpty(phone) || TextUtils.getTrimmedLength(phone) != 10) {
-            ToastUtils.showToast(MainActivity.this, "Enter valid Phone Number." , false);
+            edtPhone.setError("Enter valid phone number.");
             valid = false;
+        }
+
+        else {
+            txtFname.setError(null);
+            edtEmail.setError(null);
+            edtPhone.setError(null);
         }
 
         return valid;
@@ -137,12 +154,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b.putString(Constants.ADDRESS, address);
         // Creating Intent object
         Intent i = new Intent(getApplicationContext(), FrontActivity.class);
-        //i.putExtra(Constants.FIRST_NAME, firstName);
-        //i.putExtra(Constants.LAST_NAME, lastName);
-        //startActivity(i);
         //storing bundle object into intent
         i.putExtras(b);
         startActivity(i);
+        //Other way of using intent
+        //Intent i = new Intent();
+        //i.setClassName( "android.com.myappfirst.activity", "android.com.myappfirst.activity.FrontActivity");
+
+        //use below code if not used bundle
+        //i.putExtra(Constants.FIRST_NAME, firstName);
+        //i.putExtra(Constants.LAST_NAME, lastName);
+        //startActivity(i);
 
     }
 
