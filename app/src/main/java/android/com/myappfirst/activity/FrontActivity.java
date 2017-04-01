@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.service.chooser.ChooserTarget;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.com.myappfirst.R;
@@ -55,7 +56,7 @@ public class FrontActivity extends AppCompatActivity {
             lNameString = b.getString(Constants.LAST_NAME);
             long phoneNumberLong = b.getLong(Constants.PHONE_NUM);
             phoneNumberString = Long.toString(phoneNumberLong);
-            emailString = b.getString(Constants.PHONE_NUM);
+            emailString = b.getString(Constants.EMAIL);
             addressString = b.getString(Constants.ADDRESS);
 
             // show data to layout
@@ -99,35 +100,46 @@ public class FrontActivity extends AppCompatActivity {
     public void sendEmail(View v){
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("plain/Text");
-        i.putExtra(Intent.EXTRA_EMAIL, new String[]{emailString} );
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{"t@mail.com", emailString} );  // to whom email send
         i.putExtra(Intent.EXTRA_SUBJECT, "My Subject");
         i.putExtra(Intent.EXTRA_TEXT, "My Mail Body");
+        i.setType("message/rfc822");
         startActivity(Intent.createChooser(i, ""));
     }
 
     public void launchBrowser(View v){
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com/android"));
-        startActivity(browserIntent);
+        if(v.getId() == R.id.btn_launch_browser) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com/android"));
+            startActivity(browserIntent);
+        } else{
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse("market://details?id=com.leodesol.games.puzzlecollection&hl=en"));
+            Intent chooser = Intent.createChooser(i, "Launch Market");
+            startActivity(chooser);
+
+        }
     }
 
     public void showLocation(View v){
-        //if used lat and long for map
-        //double latitude = 40.714728;
-        //double longitude = -73.998672;
-        //String label = "MAP Label";
-        //String uriBegin = "geo:" + latitude + "," + longitude;
-        //String query = latitude + "," + longitude + "(" + label + ")";
-        //String encodedQuery = Uri.encode(query);
-        //String uriString = uriBegin + "?q=" + encodedQuery + "&z=16";
+        if(v.getId() == R.id.btn_show_location) {
+            //if used lat and long for map
+            //double latitude = 40.714728;
+            //double longitude = -73.998672;
+            //String label = "MAP Label";
+            //String uriBegin = "geo:" + latitude + "," + longitude;
+            //String query = latitude + "," + longitude + "(" + label + ")";
+            //String encodedQuery = Uri.encode(query);
+            //String uriString = uriBegin + "?q=" + encodedQuery + "&z=16";
 
-        // for location text eg. "geo:0,0?q=1600+Amphitheatre+Parkway%2C+CA"
-        // take address from form value
-        String address = Uri.encode(addressString);
-        String uriString = "geo:0,0" + "?q=1600+" + address;
 
-        Uri uri = Uri.parse(uriString);
-        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
-        startActivity(intent);
+            // taking address from form value
+            String address = Uri.encode(addressString);
+            String uriString = "geo:0,0" + "?q=" + address;
+
+            Uri uri = Uri.parse(uriString);
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        }
     }
 
     //just starting new activity
