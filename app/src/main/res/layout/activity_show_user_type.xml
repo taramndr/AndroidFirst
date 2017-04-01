@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="android.com.myappfirst.activity.ShowUserType">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Checking User's Type..."
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/txt_passed_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_pass_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:onClick="passUserTypeParentActivity"
+        android:text="Return User Type Value" />
+
+
+</LinearLayout>
