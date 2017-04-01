@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="30dp"
+    android:padding="20dp"
     tools:context="android.com.myappfirst.activity.MainActivity"
     android:background="#000000">
 
@@ -25,7 +25,6 @@
         android:layout_below="@id/form_title"
         android:id="@+id/horz_line"
        />
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/last_name"
-                style="@style/editTextStyle" />
+                android:theme="@style/editTextStyle" />
 
         </LinearLayout>
 
